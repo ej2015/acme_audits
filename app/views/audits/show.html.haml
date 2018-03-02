@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Auditable:
+  = @audit.auditable_id
+%p
+  %b Auditable type:
+  = @audit.auditable_type
+%p
+  %b Timestamp:
+  = @audit.timestamp
+%p
+  %b Event:
+  = @audit.event
+
+= link_to 'Edit', edit_audit_path(@audit)
+\|
+= link_to 'Back', audits_path
