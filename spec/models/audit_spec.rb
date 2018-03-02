@@ -1,5 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Audit, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:audit) { build :audit }
+
+  it "is valid with auditable_id and auditable_type" do
+    expect(audit).to be_valid
+  end
+
+  it "should have auditable_type" do
+    audit.auditable_id = ""
+    expect(audit).to_not be_valid
+  end
+
+  it "should have auditable_type" do
+    audit.auditable_type = ""
+    expect(audit).to_not be_valid
+  end
+
+
 end
