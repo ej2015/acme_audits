@@ -11,12 +11,12 @@ class ImportLogWorker
 
   def header_key_transformation
     Proc.new do |key|
-      case key
-      when :object_id
+      case key.to_s
+      when "object_id"
         :auditable_id
-      when :object_type
+      when "object_type"
         :auditable_type
-      when :object_changes
+      when "object_changes"
         :event
       else
         key
