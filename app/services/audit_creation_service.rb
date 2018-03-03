@@ -7,20 +7,11 @@ class AuditCreationService
   end
 
   def call
-    create_logs
+    ImportCsvWorker.perform_async(@file)
+    true
   end
  
   ###private
-
-  def create_logs
-    @file.each do |chunk|
-      create_log chunk 
-    end
-  end
-
-  def create_log(chunk)
-    ImportLogWorker.perform_async(chunk)
-  end
  
   def options 
     { chunk_size: 700,
