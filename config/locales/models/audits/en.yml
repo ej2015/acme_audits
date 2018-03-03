@@ -7,6 +7,8 @@ en:
     customer_order: Order
     product: Product
     invoice: Invoice
+    flash:
+      create_successful: Records are being updated. Please refresh the page in a few seconds if you don't see your records immediately.
     index:
       title: Audit Logs
     new:

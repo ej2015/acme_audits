@@ -27,7 +27,7 @@ class AuditsController < ApplicationController
     file = audit_params[:file]
     respond_to do |format|
       if AuditCreationService.new(file).call
-        format.html { redirect_to audits_path, notice: 'Audit was successfully created.' }
+        format.html { redirect_to audits_path, notice: t("audits.flash.create_successful") }
       else
         format.html { render :new }
       end

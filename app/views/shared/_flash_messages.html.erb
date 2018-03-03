@@ -1,0 +1,7 @@
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, class: "alert #{bs_alert_class name} alert-dismissible fade show" do %>
+    <button type='button' class='close' data-dismiss='alert' aria-label="Close" aria-hidden="true">&times;</button>
+    <%=msg%>
+  <%end%>
+<% end %>
+
