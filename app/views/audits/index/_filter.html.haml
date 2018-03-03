@@ -7,15 +7,15 @@
             .col-xs-12
               = t "audits.auditable_id" 
             .col-xs-12
-              = f.text_field(:with_auditable_id)
+              = f.text_field(:with_auditable_id, class: "filterrific-periodically-observed")
           %li.filter-option.col-xs-12.col-md-4
             .col-xs-12
               = t "audits.auditable_type"
             .col-xs-12
-              = f.select(:with_auditable_type, @filterrific.select_options[:auditable_type], include_blank: t('all'))
+              = f.select(:with_auditable_type, @filterrific.select_options[:auditable_type], include_blank: t('all'), class: "filterrific-periodically-observed")
           %li.filter-option.col-xs-12.col-md-4
             .col-xs-12
               = t "audits.timestamp"
             .col-xs-12
-              = f.text_field(:with_timestamp)
+              = f.text_field(:with_timestamp, class: "filterrific-periodically-observed")
 
