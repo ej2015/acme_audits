@@ -13,7 +13,11 @@ gem 'rails', '~> 5.1.5'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+gem 'simple_form'
+gem 'bootstrap', '~>4.0.0'
 gem 'haml-rails', '~> 1.0'
+gem 'smarter_csv'
+gem "activerecord-import"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

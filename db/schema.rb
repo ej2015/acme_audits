@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302154644) do
+ActiveRecord::Schema.define(version: 20180303043643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "audits", force: :cascade do |t|
     t.integer "auditable_id", null: false
-    t.integer "auditable_type", null: false
     t.bigint "timestamp"
     t.json "event"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "auditable_type", null: false
     t.index ["auditable_id"], name: "index_audits_on_auditable_id"
     t.index ["auditable_type"], name: "index_audits_on_auditable_type"
     t.index ["timestamp"], name: "index_audits_on_timestamp"

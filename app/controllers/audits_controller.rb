@@ -24,29 +24,11 @@ class AuditsController < ApplicationController
   # POST /audits
   # POST /audits.json
   def create
-    @audit = Audit.new(audit_params)
-
     respond_to do |format|
-      if @audit.save
-        format.html { redirect_to @audit, notice: 'Audit was successfully created.' }
-        format.json { render :show, status: :created, location: @audit }
+      if AuditCreationService.new(audit_params[:file].path).call
+        format.html { redirect_to audits_path, notice: 'Audit was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @audit.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /audits/1
-  # PATCH/PUT /audits/1.json
-  def update
-    respond_to do |format|
-      if @audit.update(audit_params)
-        format.html { redirect_to @audit, notice: 'Audit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @audit }
-      else
-        format.html { render :edit }
-        format.json { render json: @audit.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,6 +51,6 @@ class AuditsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def audit_params
-      params.require(:audit).permit(:auditable_id, :auditable_type, :timestamp, :event)
+      params.require(:audit).permit(:file)
     end
 end
