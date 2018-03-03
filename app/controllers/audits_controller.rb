@@ -12,46 +12,25 @@ class AuditsController < ApplicationController
       },
       available_filters: [:with_auditable_id, :with_auditable_type, :with_timestamp]
     ) or return
-    @audits = @filterrific.find.page params[:page]
+    @audits = @filterrific.find.order(:timestamp).page params[:page]
     respond_to do |format|
       format.html
       format.js
     end
   end
 
-  # GET /audits/1
-  # GET /audits/1.json
-  def show
-  end
-
-  # GET /audits/new
   def new
     @audit = Audit.new
   end
 
-  # GET /audits/1/edit
-  def edit
-  end
-
-  # POST /audits
-  # POST /audits.json
   def create
+    file = audit_params[:file]
     respond_to do |format|
-      if AuditCreationService.new(audit_params[:file].path).call
+      if AuditCreationService.new(file).call
         format.html { redirect_to audits_path, notice: 'Audit was successfully created.' }
       else
         format.html { render :new }
       end
-    end
-  end
-
-  # DELETE /audits/1
-  # DELETE /audits/1.json
-  def destroy
-    @audit.destroy
-    respond_to do |format|
-      format.html { redirect_to audits_url, notice: 'Audit was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

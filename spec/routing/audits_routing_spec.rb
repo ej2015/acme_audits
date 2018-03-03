@@ -11,28 +11,8 @@ RSpec.describe AuditsController, type: :routing do
       expect(:get => "/audits/new").to route_to("audits#new")
     end
 
-    it "routes to #show" do
-      expect(:get => "/audits/1").to route_to("audits#show", :id => "1")
-    end
-
-    it "routes to #edit" do
-      expect(:get => "/audits/1/edit").to route_to("audits#edit", :id => "1")
-    end
-
     it "routes to #create" do
       expect(:post => "/audits").to route_to("audits#create")
-    end
-
-    it "routes to #update via PUT" do
-      expect(:put => "/audits/1").to route_to("audits#update", :id => "1")
-    end
-
-    it "routes to #update via PATCH" do
-      expect(:patch => "/audits/1").to route_to("audits#update", :id => "1")
-    end
-
-    it "routes to #destroy" do
-      expect(:delete => "/audits/1").to route_to("audits#destroy", :id => "1")
     end
 
   end

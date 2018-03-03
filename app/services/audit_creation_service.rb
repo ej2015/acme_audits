@@ -2,7 +2,8 @@ class AuditCreationService
 
   attr_reader :file
 
-  def initialize(file_path)
+  def initialize(file)
+    file_path = file.path
     @file = SmarterCSV.process(file_path, options)
   end
 
