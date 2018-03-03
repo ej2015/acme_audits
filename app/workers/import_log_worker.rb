@@ -3,7 +3,7 @@ class ImportLogWorker
 
   def perform(chunk)
     transformed_chunk = chunk.map { |record| record.transform_keys(&header_key_transformation) }.map { |record| record.map(&value_transformation).to_h }
-    Audit.import transformed_trunk
+    Audit.import transformed_chunk
   end
 
 
