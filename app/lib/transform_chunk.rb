@@ -1,17 +1,14 @@
 class TransformChunk
   
-  def initialize(chunks)
-    @chunks = chunks
+  def initialize(chunk)
+    @chunk = chunk
   end
 
   def call
-    @chunks.map { |chunk| transform chunk }
+    @chunk.map { |record| record.transform_keys(&header_key_transformation) }.map { |record| record.map(&value_transformation).to_h }
   end
 
   ##private
-  def transform(chunk)
-    chunk.map { |record| record.transform_keys(&header_key_transformation) }.map { |record| record.map(&value_transformation).to_h }
-  end
 
   def header_key_transformation
     Proc.new do |key|
