@@ -23,7 +23,7 @@ class AuditCreationService
   end
  
   def options 
-    { chunk_size: 10000,
+    { chunk_size: 1000,
      #this option unfortunately doesn't work
      # header_transformations: [
      #   key_mapping: { 
