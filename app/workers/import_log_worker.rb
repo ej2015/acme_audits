@@ -4,7 +4,7 @@ class ImportLogWorker
 
   def perform(chunk)
     #transformed_chunk = TransformChunk.new(chunk).call    
-    transformed_chunk = transfrom chunk    
+    transformed_chunk = transform chunk    
     Audit.import transformed_chunk
   end
 
