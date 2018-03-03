@@ -1,4 +1,13 @@
 en:
   audits:
+    auditable_id: ID
+    auditable_type: Type
+    timestamp: Timestamp
+    event: Event
+    customer_order: Order
+    product: Product
+    invoice: Invoice
+    index:
+      title: Audit Logs
     new:
       title: Upload New Audit Log

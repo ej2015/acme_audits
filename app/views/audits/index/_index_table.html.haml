@@ -1,0 +1,20 @@
+%table
+  %thead
+    %tr
+      %th= t "audits.auditable_id"
+      %th= t "audits.auditable_type"
+      %th= t "audits.timestamp"
+      %th= t "audits.event"
+
+  %tbody
+    - @audits.each do |audit|
+      %tr
+        %td= audit.auditable_id
+        %td= t audit.auditable_type, scope: "audits"
+        %td= audit.timestamp
+        %td= audit.event
+
+%br
+
+= paginate @audits
+

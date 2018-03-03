@@ -1,27 +1,9 @@
-%h1 Listing audits
+%h1
+  = t ".title" 
 
-%table
-  %thead
-    %tr
-      %th Auditable
-      %th Auditable type
-      %th Timestamp
-      %th Event
-      %th
-      %th
-      %th
+= render "audits/index/filter"
 
-  %tbody
-    - @audits.each do |audit|
-      %tr
-        %td= audit.auditable_id
-        %td= audit.auditable_type
-        %td= audit.timestamp
-        %td= audit.event
-        %td= link_to 'Show', audit
-        %td= link_to 'Edit', edit_audit_path(audit)
-        %td= link_to 'Destroy', audit, method: :delete, data: { confirm: 'Are you sure?' }
+#filterrific_results
+  = render "audits/index/index_table"
 
-%br
-
-= link_to 'New Audit', new_audit_path
+= link_to 'New Audit', new_audit_path, class: "btn btn-primary"

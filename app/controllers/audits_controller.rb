@@ -1,10 +1,22 @@
 class AuditsController < ApplicationController
-  before_action :set_audit, only: [:show, :edit, :update, :destroy]
+  before_action :set_audit, only: [:show, :edit, :destroy]
 
   # GET /audits
   # GET /audits.json
   def index
-    @audits = Audit.all
+    @filterrific = initialize_filterrific(
+      Audit,
+      params[:filterrific],
+      select_options: {
+        auditable_type: Audit.options_for_auditable_type
+      },
+      available_filters: [:with_auditable_id, :with_auditable_type, :with_timestamp]
+    ) or return
+    @audits = @filterrific.find.page params[:page]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /audits/1

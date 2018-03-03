@@ -18,6 +18,9 @@ gem 'bootstrap', '~>4.0.0'
 gem 'haml-rails', '~> 1.0'
 gem 'smarter_csv'
 gem "activerecord-import"
+gem "kaminari"
+gem "filterrific", '~>5.0.0'
+gem "jquery-rails"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
