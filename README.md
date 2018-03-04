@@ -1,24 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Use background jobs to process csv files and save records to db.
 
-* Ruby version
+Master branch:
+  Process files with SmarterCSV without saving it. It'll throw errors if the csv file is malformated (e.g. containing escaped quotes). Deployed to Heroku
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+handle-serialized-json-in-file:
+  Saves file to server. File is preprocessed to make it legal for SmarterCSV to process. Not deployed to Heroku.
