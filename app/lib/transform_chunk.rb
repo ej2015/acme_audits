@@ -5,7 +5,8 @@ class TransformChunk
   end
 
   def call
-    @chunk.map { |record| record.transform_keys(&header_key_transformation) }.map { |record| record.map(&value_transformation).to_h }
+    #@chunk.map { |record| record.transform_keys(&header_key_transformation) }.map { |record| record.map(&value_transformation).to_h }
+    @chunk.map { |record| record.map(&value_transformation).to_h }
   end
 
   ##private
@@ -27,13 +28,12 @@ class TransformChunk
 
   def value_transformation
     Proc.new do |k,v|
-      if k == :auditable_type
+      if k == "auditable_type"
         if v == "Order"
           [k, "customer_order"]
         else
           [k, v.downcase]
         end
-        
       else
         [k, v]
       end
